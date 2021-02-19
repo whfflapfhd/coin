@@ -62,8 +62,7 @@
             var html = '',
             $currentCnt = 0;
             $.each(data,function(idx,value){
-                var $postDate = value.start_date.split('T')[0].split('-').join('');                
-                console.log(value);
+                var $postDate = value.start_date.split('T')[0].split('-').join('');                                
                 if($today != $postDate) return false;
                 html += "<li><span>"+value.assets+"</span><a href='"+value.url+"' target='_blank'>"+value.text+"</a></li>";
                 $currentCnt = idx+1;
