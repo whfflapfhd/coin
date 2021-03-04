@@ -48,6 +48,22 @@
         <ul class="postList viewAll"><li class='nopost'>데이터 없음</li></ul>
     </div>
     <script>
+        /*Set Date Format*/
+        Date.prototype.format = function(format){
+            if(!this.valueOf()) return '';
+            let _this = this;
+            return format.replace(/(yyyy|mm|dd|hh|mm)/gi,function($1){
+                switch($1){
+                    case 'yyyy' : return _this.getFullYear();
+                    case 'MM' : return ('0' + (1 + _this.getMonth())).slice(-2);
+                    case 'dd' : return ('0' + _this.getDate()).slice(-2);
+                    case 'hh' : return _this.getHours();
+                    case 'mm' : return _this.getMinutes();
+                    default: return $1;
+                }
+            });
+        };
+     
         var urlAddress = 'https://project-team.upbit.com/api/v1/disclosure?region=kr&per_page=',
         result,
         data,
@@ -107,6 +123,15 @@
         };
         printNewPost();
         var post = setInterval(printNewPost, 10000);
+     
+        let postCount = 0;
+        const disclosure = {};
+        disclosure.$url = 'https://project-team.upbit.com/api/v1/disclosure?region=kr&per_page=';        
+        disclosure.$getDate = function(range){
+            let $currentDate = new Date();
+            return $currentDate.format(range)
+        }
+        disclosure.$today = disclosure.$getDate('yyyy-mm-dd');
     </script>
  </body>
 </html>
