@@ -13,12 +13,11 @@
     <div class="wrap">
         <h1>프로젝트 공시</h1>
         <div class="btn-box">
-            <button onclick='$(".viewAll").hide();$(".monitoring").show()'>오늘자 공시</button>
-            <button onclick='printPost(10)'>공시 10개</button>
-            <button onclick='printPost(20)'>공시 20개</button>            
+            <button data-count=10 data-classname='new'>오늘자 공시</button>
+            <button data-count=10>공시 10개</button>
+            <button data-count=20>공시 20개</button>            
         </div>
-        <ul class="postList monitoring"><li class='nopost'>데이터 없음</li></ul>
-        <ul class="postList viewAll"><li class='nopost'>데이터 없음</li></ul>
+        <ul class="postList monitoring"><li class='nopost'>데이터 없음</li></ul>        
     </div>
  </body>
 </html>
