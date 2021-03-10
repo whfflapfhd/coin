@@ -6,7 +6,7 @@
 Date.prototype.format = function(format){
 	if(!this.valueOf()) return '';
 	let _this = this;
-	return format.replace(/(yyyy|mm|dd|hh|mm|ss|ms)/gi,function($1){
+	return format.replace(/(yyyy|MM|dd|hh|mm|ss|ms)/gi,function($1){
 		switch($1){
 			case 'yyyy' : return _this.getFullYear();
 			case 'MM' : return ('0' + (1 + _this.getMonth())).slice(-2);
@@ -70,6 +70,7 @@ const Disclosure = function(){
             let currentBoolean = (storageData) ? JSON.parse(storageData)[0].id === array[0].id : false;
             if(!currentBoolean){
                 localStorage.setItem('data' , JSON.stringify(array));
+                localStorage.setItem('postDate' , _this.getDate('yyyy-MM-dd hh:mm:ss'));
                 console.log('xhr');
             }else{
                 array = JSON.parse(storageData);
